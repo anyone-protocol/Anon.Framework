@@ -1,9 +1,9 @@
 Pod::Spec.new do |m|
 
-  m.name             = 'Tor'
+  m.name             = 'Anon'
   m.version          = '408.11.2'
-  m.summary          = 'Tor.framework is the easiest way to embed Tor in your iOS application.'
-  m.description      = 'Tor.framework is the easiest way to embed Tor in your iOS application. Currently, the framework compiles in static versions of tor, libevent, openssl, and liblzma.'
+  m.summary          = 'Anon.framework is the easiest way to embed Anon in your iOS application.'
+  m.description      = 'Anon.framework is the easiest way to embed Anon in your iOS application. Currently, the framework compiles in static versions of tor, libevent, openssl, and liblzma.'
 
   m.homepage         = 'https://github.com/iCepa/Tor.framework'
   m.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -34,13 +34,13 @@ cd "${PODS_TARGET_SRCROOT}/Tor/%1$s"
   end
 
   m.subspec 'CTor' do |s|
-    s.dependency 'Tor/Core'
+    s.dependency 'Anon/Core'
 
     s.source_files = 'Tor/Classes/CTor/**/*'
 
     s.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/tor" "${PODS_TARGET_SRCROOT}/Tor/tor/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
-      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/Tor" -l"z" -l"lzma" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"tor"',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/anon" "${PODS_TARGET_SRCROOT}/Tor/anon/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
+      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/Tor" -l"z" -l"lzma" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"anon"',
     }
 
     s.ios.pod_target_xcconfig = {
@@ -74,11 +74,11 @@ cd "${PODS_TARGET_SRCROOT}/Tor/%1$s"
       :name => 'Build Tor',
       :execution_position => :before_compile,
       :output_files => ['tor-always-execute-this-but-supress-warning'],
-      :script => sprintf(script, "tor")
+      :script => sprintf(script, "anon")
     },
     ]
 
-    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/tor', 'Tor/tor.sh', 'Tor/xz', 'Tor/xz.sh'
+    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/anon', 'Tor/anon.sh', 'Tor/xz', 'Tor/xz.sh'
   end
 
   m.subspec 'CTor-NoLZMA' do |s|
@@ -87,8 +87,8 @@ cd "${PODS_TARGET_SRCROOT}/Tor/%1$s"
     s.source_files = 'Tor/Classes/CTor/**/*'
 
     s.pod_target_xcconfig = {
-      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/tor" "${PODS_TARGET_SRCROOT}/Tor/tor/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
-      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/Tor" -l"z" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"tor"',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/anon" "${PODS_TARGET_SRCROOT}/Tor/anon/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
+      'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/Tor" -l"z" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"anon"',
     }
 
     s.ios.pod_target_xcconfig = {
@@ -117,28 +117,28 @@ cd "${PODS_TARGET_SRCROOT}/Tor/%1$s"
       :execution_position => :before_compile,
       :output_files => ['tor-always-execute-this-but-supress-warning'],
       :script => <<-ENDSCRIPT
-cd "${PODS_TARGET_SRCROOT}/Tor/tor"
-../tor.sh --no-lzma
+cd "${PODS_TARGET_SRCROOT}/Tor/anon"
+../anon.sh --no-lzma
   ENDSCRIPT
     },
     ]
 
-    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/tor', 'Tor/tor.sh'
+    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/anon', 'Tor/anon.sh'
   end
 
   m.subspec 'GeoIP' do |s|
-    s.dependency 'Tor/CTor'
+    s.dependency 'Anon/CTor'
 
     s.resource_bundles = {
-      'GeoIP' => ['Tor/tor/src/config/geoip', 'Tor/tor/src/config/geoip6']
+      'GeoIP' => ['Tor/anon/src/config/geoip', 'Tor/anon/src/config/geoip6']
     }
   end
 
   m.subspec 'GeoIP-NoLZMA' do |s|
-    s.dependency 'Tor/CTor-NoLZMA'
+    s.dependency 'Anon/CTor-NoLZMA'
 
     s.resource_bundles = {
-      'GeoIP' => ['Tor/tor/src/config/geoip', 'Tor/tor/src/config/geoip6']
+      'GeoIP' => ['Tor/anon/src/config/geoip', 'Tor/anon/src/config/geoip6']
     }
   end
 

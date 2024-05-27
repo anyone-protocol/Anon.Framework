@@ -80,7 +80,7 @@
 		A0F008FA27906DBA0073D36D /* TORConfigurationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORConfigurationTests.m; sourceTree = "<group>"; };
 		A0F008FB27906DBA0073D36D /* TORControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TORControllerTests.m; sourceTree = "<group>"; };
 		A0F008FE27906F620073D36D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; name = .gitignore; path = ../.gitignore; sourceTree = "<group>"; };
-		A0F0090127906F970073D36D /* tor.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = tor.sh; path = ../Tor/tor.sh; sourceTree = "<group>"; };
+		A0F0090127906F970073D36D /* anon.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = anon.sh; path = ../Tor/anon.sh; sourceTree = "<group>"; };
 		A0F0090227906F970073D36D /* xz.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = xz.sh; path = ../Tor/xz.sh; sourceTree = "<group>"; };
 		A0F0090327906F970073D36D /* libevent.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = libevent.sh; path = ../Tor/libevent.sh; sourceTree = "<group>"; };
 		A0F0090427906F970073D36D /* openssl.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = openssl.sh; path = ../Tor/openssl.sh; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 				A0F0090227906F970073D36D /* xz.sh */,
 				A0F0090427906F970073D36D /* openssl.sh */,
 				A0F0090327906F970073D36D /* libevent.sh */,
-				A0F0090127906F970073D36D /* tor.sh */,
+				A0F0090127906F970073D36D /* anon.sh */,
 				A0E5E59A298BC74000727C4F /* arti.sh */,
 				A0463DB82AA0DB0700AC9925 /* onionmasq.sh */,
 				A0C981E32A9F52D100E265EE /* mmap-cache.patch */,
@@ -388,11 +388,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tor-Example/Pods-Tor-Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Tor-iOS/Tor.framework",
+				"${BUILT_PRODUCTS_DIR}/Anon-iOS/Anon.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anon.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -472,11 +472,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Tor-Example-Mac/Pods-Tor-Example-Mac-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Tor-macOS/Tor.framework",
+				"${BUILT_PRODUCTS_DIR}/Anon-macOS/Anon.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anon.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -647,6 +647,7 @@
 			baseConfigurationReference = 4F31AB271AA16E836CDC5F8D /* Pods-Tor-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tor/Tor-Prefix.pch";
 				INFOPLIST_FILE = "Tor/Tor-Info.plist";
@@ -664,6 +665,7 @@
 			baseConfigurationReference = 74CA0FB740D38C49003C1E1A /* Pods-Tor-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tor/Tor-Prefix.pch";
 				INFOPLIST_FILE = "Tor/Tor-Info.plist";

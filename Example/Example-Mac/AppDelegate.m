@@ -7,17 +7,17 @@
 //
 
 #import "AppDelegate.h"
-#import <Tor/NSBundle+GeoIP.h>
-#import <Tor/TORConfiguration.h>
-#import <Tor/TORController.h>
+#import <Anon/NSBundle+GeoIP.h>
+#import <Anon/TORConfiguration.h>
+#import <Anon/TORController.h>
 
 #ifdef USE_ARTI
-    #import <Tor/TORArti.h>
+    #import <Anon/TORArti.h>
 #else
     #ifdef USE_ONIONMASQ
-        #import <Tor/Onionmasq.h>
+        #import <Anon/Onionmasq.h>
     #else
-        #import <Tor/TORThread.h>
+        #import <Anon/TORThread.h>
     #endif
 #endif
 

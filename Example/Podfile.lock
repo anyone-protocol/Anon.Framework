@@ -1,20 +1,20 @@
 PODS:
-  - Tor/Core (408.11.2)
-  - Tor/CTor (408.11.2):
-    - Tor/Core
-  - Tor/GeoIP (408.11.2):
-    - Tor/CTor
+  - Anon/Core (408.11.2)
+  - Anon/CTor (408.11.2):
+    - Anon/Core
+  - Anon/GeoIP (408.11.2):
+    - Anon/CTor
 
 DEPENDENCIES:
-  - Tor/GeoIP (from `../`)
+  - Anon/GeoIP (from `../`)
 
 EXTERNAL SOURCES:
-  Tor:
+  Anon:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Tor: c699393e1f48264cd293fa314bfbcdca5086574c
+  Anon: 3eea51e29452afccff3b7580ddeae6847d6b0916
 
-PODFILE CHECKSUM: aaf1dd3b609adb9f024c41d7b7c0ea5a012fd799
+PODFILE CHECKSUM: acc65ebbb3737e07f05a4b68359e2bbefcc86db4
 
 COCOAPODS: 1.15.2

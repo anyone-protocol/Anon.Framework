@@ -2,10 +2,10 @@ Pod::Spec.new do |m|
 
   # TODO: Why the hell do I need to provide this manually? CocoaPods should figure this out automatically, like with other pods, when they're used as static libraries.
 
-  m.name             = 'Tor'
+  m.name             = 'Anon'
   m.version          = '408.11.2'
-  m.summary          = 'Tor.framework is the easiest way to embed Tor in your iOS application.'
-  m.description      = 'Tor.framework is the easiest way to embed Tor in your iOS application. Currently, the framework compiles in static versions of tor, libevent, openssl, and liblzma.'
+  m.summary          = 'Anon.framework is the easiest way to embed Anon in your iOS application.'
+  m.description      = 'Anon.framework is the easiest way to embed Anon in your iOS application. Currently, the framework compiles in static versions of tor, libevent, openssl, and liblzma.'
 
   m.homepage         = 'https://github.com/iCepa/Tor.framework'
   m.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -42,7 +42,7 @@ ENDSCRIPT
 
     s.pod_target_xcconfig = {
       'DEFINES_MODULE' => 'YES',
-      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/tor" "${PODS_TARGET_SRCROOT}/Tor/tor/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
+      'HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_TARGET_SRCROOT}/Tor/anon" "${PODS_TARGET_SRCROOT}/Tor/anon/src" "${PODS_TARGET_SRCROOT}/Tor/openssl/include" "${BUILT_PRODUCTS_DIR}/openssl" "${PODS_TARGET_SRCROOT}/Tor/libevent/include"',
       'OTHER_LDFLAGS' => '$(inherited) -L"${BUILT_PRODUCTS_DIR}/Tor" -l"z" -l"lzma" -l"crypto" -l"ssl" -l"event_core" -l"event_extra" -l"event_pthreads" -l"event" -l"tor"'
     }
 
@@ -82,7 +82,7 @@ ENDSCRIPT
         :name => 'Build Tor',
         :execution_position => :before_compile,
         :output_files => ['tor-always-execute-this-but-supress-warning'],
-        :script => sprintf(script, "tor")
+        :script => sprintf(script, "anon")
       },
       {
         :name => 'Link Headers',
@@ -97,14 +97,14 @@ ENDSCRIPT
       }
     ]
 
-    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/tor', 'Tor/tor.sh', 'Tor/xz', 'Tor/xz.sh'
+    s.preserve_paths = 'Tor/include', 'Tor/libevent', 'Tor/libevent.sh', 'Tor/openssl', 'Tor/openssl.sh', 'Tor/anon', 'Tor/anon.sh', 'Tor/xz', 'Tor/xz.sh'
   end
 
   m.subspec 'GeoIP' do |s|
     s.dependency 'Tor/CTor'
 
     s.resource_bundles = {
-      'GeoIP' => ['Tor/tor/src/config/geoip', 'Tor/tor/src/config/geoip6']
+      'GeoIP' => ['Tor/anon/src/config/geoip', 'Tor/anon/src/config/geoip6']
     }
   end
 
